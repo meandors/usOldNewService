@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OldClientApp.ServiceRef;
+using NewClientApp.ServiceRef;
 using System.Diagnostics;
 
 namespace OldClientApp
@@ -25,6 +25,7 @@ namespace OldClientApp
             Person person = new Person();
             person.Name = tbName.Text;
             person.Surname = tbSurname.Text;
+            person.BirthDate = dtAddBirth.Value;
             Debug.WriteLine("Dodawanie...");
             try
             {
@@ -57,7 +58,8 @@ namespace OldClientApp
                     lbClients.Items.Clear();
                     foreach (var person in persons)
                     {
-                        string res = "Id: " + person.Id + "  |  Name: " + person.Name + "  |  Surname: " + person.Surname;
+                        string res = "Id: " + person.Id + "  |  Name: " + person.Name + "  |  Surname: " 
+                            + person.Surname + "   |   Birthday date: " + person.BirthDate.ToShortDateString();
                         Debug.WriteLine(res);
                         lbClients.Items.Add(res);
                     }
@@ -84,7 +86,8 @@ namespace OldClientApp
                 }
                 else
                 {
-                    string res = "Id: " + person.Id + "  |  Name: " + person.Name + "  |  Surname: " + person.Surname;
+                    string res = "Id: " + person.Id + "  |  Name: " + person.Name + "  |  Surname: " 
+                        + person.Surname + "   |   Birthday date: "+person.BirthDate.ToShortDateString();
                     Debug.WriteLine(res);
                     lbClients.Items.Clear();
                     lbClients.Items.Add(res);
@@ -106,7 +109,7 @@ namespace OldClientApp
             person.Id = (int)nModID.Value;
             person.Name = tbModName.Text;
             person.Surname = tbModSurname.Text;
-
+            person.BirthDate = dtModBirth.Value;
             try
             {
                 client.Open();

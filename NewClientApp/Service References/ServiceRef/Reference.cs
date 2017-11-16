@@ -8,14 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OldClientApp.ServiceRef {
+namespace NewClientApp.ServiceRef {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Person", Namespace="http://schemas.datacontract.org/2004/07/wcfOldService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Person", Namespace="http://schemas.datacontract.org/2004/07/wcfNewService")]
     [System.SerializableAttribute()]
     public partial class Person : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -30,6 +30,9 @@ namespace OldClientApp.ServiceRef {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SurnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime BirthDateField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -80,6 +83,19 @@ namespace OldClientApp.ServiceRef {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.DateTime BirthDate {
+            get {
+                return this.BirthDateField;
+            }
+            set {
+                if ((this.BirthDateField.Equals(value) != true)) {
+                    this.BirthDateField = value;
+                    this.RaisePropertyChanged("BirthDate");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -95,28 +111,28 @@ namespace OldClientApp.ServiceRef {
     public interface IMyService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/GetPersons", ReplyAction="http://tempuri.org/IMyService/GetPersonsResponse")]
-        OldClientApp.ServiceRef.Person[] GetPersons();
+        NewClientApp.ServiceRef.Person[] GetPersons();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/GetPersons", ReplyAction="http://tempuri.org/IMyService/GetPersonsResponse")]
-        System.Threading.Tasks.Task<OldClientApp.ServiceRef.Person[]> GetPersonsAsync();
+        System.Threading.Tasks.Task<NewClientApp.ServiceRef.Person[]> GetPersonsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/GetPerson", ReplyAction="http://tempuri.org/IMyService/GetPersonResponse")]
-        OldClientApp.ServiceRef.Person GetPerson(int id);
+        NewClientApp.ServiceRef.Person GetPerson(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/GetPerson", ReplyAction="http://tempuri.org/IMyService/GetPersonResponse")]
-        System.Threading.Tasks.Task<OldClientApp.ServiceRef.Person> GetPersonAsync(int id);
+        System.Threading.Tasks.Task<NewClientApp.ServiceRef.Person> GetPersonAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/AddPerson", ReplyAction="http://tempuri.org/IMyService/AddPersonResponse")]
-        void AddPerson(OldClientApp.ServiceRef.Person person);
+        void AddPerson(NewClientApp.ServiceRef.Person person);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/AddPerson", ReplyAction="http://tempuri.org/IMyService/AddPersonResponse")]
-        System.Threading.Tasks.Task AddPersonAsync(OldClientApp.ServiceRef.Person person);
+        System.Threading.Tasks.Task AddPersonAsync(NewClientApp.ServiceRef.Person person);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/ModifyPerson", ReplyAction="http://tempuri.org/IMyService/ModifyPersonResponse")]
-        void ModifyPerson(OldClientApp.ServiceRef.Person person);
+        void ModifyPerson(NewClientApp.ServiceRef.Person person);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/ModifyPerson", ReplyAction="http://tempuri.org/IMyService/ModifyPersonResponse")]
-        System.Threading.Tasks.Task ModifyPersonAsync(OldClientApp.ServiceRef.Person person);
+        System.Threading.Tasks.Task ModifyPersonAsync(NewClientApp.ServiceRef.Person person);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMyService/GetArraySize", ReplyAction="http://tempuri.org/IMyService/GetArraySizeResponse")]
         int GetArraySize();
@@ -126,12 +142,12 @@ namespace OldClientApp.ServiceRef {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IMyServiceChannel : OldClientApp.ServiceRef.IMyService, System.ServiceModel.IClientChannel {
+    public interface IMyServiceChannel : NewClientApp.ServiceRef.IMyService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class MyServiceClient : System.ServiceModel.ClientBase<OldClientApp.ServiceRef.IMyService>, OldClientApp.ServiceRef.IMyService {
+    public partial class MyServiceClient : System.ServiceModel.ClientBase<NewClientApp.ServiceRef.IMyService>, NewClientApp.ServiceRef.IMyService {
         
         public MyServiceClient() {
         }
@@ -152,35 +168,35 @@ namespace OldClientApp.ServiceRef {
                 base(binding, remoteAddress) {
         }
         
-        public OldClientApp.ServiceRef.Person[] GetPersons() {
+        public NewClientApp.ServiceRef.Person[] GetPersons() {
             return base.Channel.GetPersons();
         }
         
-        public System.Threading.Tasks.Task<OldClientApp.ServiceRef.Person[]> GetPersonsAsync() {
+        public System.Threading.Tasks.Task<NewClientApp.ServiceRef.Person[]> GetPersonsAsync() {
             return base.Channel.GetPersonsAsync();
         }
         
-        public OldClientApp.ServiceRef.Person GetPerson(int id) {
+        public NewClientApp.ServiceRef.Person GetPerson(int id) {
             return base.Channel.GetPerson(id);
         }
         
-        public System.Threading.Tasks.Task<OldClientApp.ServiceRef.Person> GetPersonAsync(int id) {
+        public System.Threading.Tasks.Task<NewClientApp.ServiceRef.Person> GetPersonAsync(int id) {
             return base.Channel.GetPersonAsync(id);
         }
         
-        public void AddPerson(OldClientApp.ServiceRef.Person person) {
+        public void AddPerson(NewClientApp.ServiceRef.Person person) {
             base.Channel.AddPerson(person);
         }
         
-        public System.Threading.Tasks.Task AddPersonAsync(OldClientApp.ServiceRef.Person person) {
+        public System.Threading.Tasks.Task AddPersonAsync(NewClientApp.ServiceRef.Person person) {
             return base.Channel.AddPersonAsync(person);
         }
         
-        public void ModifyPerson(OldClientApp.ServiceRef.Person person) {
+        public void ModifyPerson(NewClientApp.ServiceRef.Person person) {
             base.Channel.ModifyPerson(person);
         }
         
-        public System.Threading.Tasks.Task ModifyPersonAsync(OldClientApp.ServiceRef.Person person) {
+        public System.Threading.Tasks.Task ModifyPersonAsync(NewClientApp.ServiceRef.Person person) {
             return base.Channel.ModifyPersonAsync(person);
         }
         
